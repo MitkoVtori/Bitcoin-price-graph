@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Bitcoin Price Graph</title>
-      <link rel="icon" type="image/png" href="images/Bitcoin.png">
+    <link rel="icon" type="image/png" href="images/Bitcoin.png">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
       body {
@@ -22,16 +22,46 @@
         height: 60vh;
         max-height: 400px;
       }
+
+      .info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        color: white;
+        font-size: 16px;
+      }
+
+      .info span {
+        margin-right: 10px;
+      }
+
+      .info div {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+        background-color: green;
+      }
+
+      .info:hover div {
+        content: 'Hold your mouse on the points, to see the current price';
+        background-color: blue;
+      }
     </style>
   </head>
   <body>
     <canvas id="chart"></canvas>
+    <div class="info">
+      <span>Hold your mouse on the points, to see the current price</span>
+    </div>
     <script>
       const chart = new Chart(document.getElementById('chart'), {
         type: 'line',
         data: {
           labels: [],
           datasets: [{
+            label: 'Bitcoin Price',
             data: [],
             fill: false,
             borderColor: 'green',
@@ -85,12 +115,19 @@
       });
 
       const url = 'https://api.coindesk.com/v1/bpi/currentprice.json';
+      let count = 0;
 
       function updateData() {
         fetch(url)
           .then(response => response.json())
           .then(data => {
             const price = data.bpi.USD.rate_float;
+            if (count >= 25) {
+              chart.data.labels.shift();
+              chart.data.datasets[0].data.shift();
+            } else {
+              count++;
+            }
             chart.data.labels.push('');
             chart.data.datasets[0].data.push(price);
             chart.update();
