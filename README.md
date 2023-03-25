@@ -9,4 +9,4 @@ Script: https://github.com/MitkoVtori/Bitcoin-price-graph/blob/main/index.js
 <br>
 Libraries: `<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>`
 
-![Screenshot 2023-03-24 202105](https://user-images.githubusercontent.com/112943652/227708871-fe406a79-9e11-419c-b6db-1fbc9f4c4bf6.png)
+![Screenshot 2023-03-25 115223](https://user-images.githubusercontent.com/112943652/227710638-8ce272f2-c228-4178-a3e1-f0b6b9cbce11.png)
