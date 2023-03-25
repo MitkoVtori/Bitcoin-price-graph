@@ -1,0 +1,42 @@
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+canvas {
+    width: 90vw;
+    max-width: 800px;
+    height: 60vh;
+    max-height: 400px;
+}
+
+.info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    color: white;
+    font-size: 16px;
+}
+
+.info span {
+    margin-right: 10px;
+}
+
+.info div {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    background-color: green;
+}
+
+.info:hover div {
+    content: 'Hold your mouse on the points, to see the current price';
+    background-color: blue;
+}
